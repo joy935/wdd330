@@ -39,7 +39,7 @@
     "comma-dangle": 0,
     "max-len": 0,
     "import/extensions": 0,
-    "import/namespace": "off",
+    "import/namespace": "off", // added because of the error 2:30  error  Parse errors in imported module 'vite': Unexpected token ; (62:10)  import/namespace
     "no-underscore-dangle": 0,
     "consistent-return": 0,
     "radix": 0,
