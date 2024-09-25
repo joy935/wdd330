@@ -1,7 +1,10 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, getParams } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 
 const dataSource = new ProductData("tents");
+
+const productId = getParams("product");
+console.log(productId);
 
 function addProductToCart(newProduct) {
   // retrieve current cart info from local storage
@@ -29,3 +32,4 @@ async function addToCartHandler(e) {
 document
   .getElementById("addToCart")
   .addEventListener("click", addToCartHandler);
+
