@@ -21,3 +21,24 @@ export function setClick(selector, callback) {
   });
   qs(selector).addEventListener("click", callback);
 }
+
+// search the URL for the "key" (product) parameter, return the "value" (Prod_ID)
+export function getParams(param) {
+
+  // produces the URL string after "?"
+  const queryString = window.location.search;
+
+  // parse the string parameters
+  const urlParams = new URLSearchParams(queryString);
+
+  // looks for "value" associated to the provided "key"
+  const product = urlParams.get(param)
+
+  // returns the value (if any)
+  if (product) {
+    return product;
+  } else {
+    console.log(param, "is not a valid field");
+    return null;
+  }
+}
