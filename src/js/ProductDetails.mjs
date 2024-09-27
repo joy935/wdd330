@@ -39,18 +39,18 @@ export default class ProductDetails {
         const cart = getLocalStorage("so-cart") || [];
 
         // check if the product is already in the cart
-        const exists = cart.some(product => product.Id === newProduct.Id);
+        const exists = cart.some(product => product.Id === this.product.Id);
 
-        // if the product isn't already in the cart, add it, otherwise do nothing
+        //if the product isn't already in the cart, add it, otherwise do nothing
         if (!exists) {
             // add new item to the cart
-            cart.push(newProduct);
-            // update local storage with complete cart
+            cart.push(this.product);
+            // update local storage with complete cart d
             setLocalStorage("so-cart", cart);
         }
     }
     renderProductDetails(selector) {
         const element = document.querySelector(selector);
         element.insertAdjacentHTML("afterBegin", productDetailsTemplate(this.product));
-    }
+        }
 };
