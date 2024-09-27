@@ -1,25 +1,11 @@
-import { getLocalStorage, setLocalStorage, getParam } from "./utils.mjs";
+import { getParam } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
-
-const dataSource = new ProductData("tents");
+import ProductDetails from "./ProductDetails.mjs";
 
 const productId = getParam("product");
-
-function addProductToCart(newProduct) {
-  // retrieve current cart info from local storage
-  const cart = getLocalStorage("so-cart") || [];
-
-  // check if the product is already in the cart
-  const exists = cart.some(product => product.Id === newProduct.Id);
-
-  // if the product isn't already in the cart, add it, otherwise do nothing
-  if (!exists) {
-    // add new item to the cart
-    cart.push(newProduct);
-    // update local storage with complete cart
-    setLocalStorage("so-cart", cart);
-  }
-}
+const dataSource = new ProductData("tents");
+const product = new ProductDetails(productId, dataSource);
+product.init();
 
 // add to cart button event handler
 async function addToCartHandler(e) {
