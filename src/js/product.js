@@ -4,7 +4,6 @@ import ProductData from "./ProductData.mjs";
 const dataSource = new ProductData("tents");
 
 const productId = getParam("product");
-console.log(productId);
 
 function addProductToCart(newProduct) {
   // retrieve current cart info from local storage
