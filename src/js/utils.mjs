@@ -24,21 +24,14 @@ export function setClick(selector, callback) {
 
 // search the URL for the "key" (product) parameter, return the "value" (Prod_ID)
 export function getParams(param) {
-
-  // produces the URL string after "?"
-  const queryString = window.location.search;
-
-  // parse the string parameters
-  const urlParams = new URLSearchParams(queryString);
-
-  // looks for "value" associated to the provided "key"
-  const product = urlParams.get(param)
-
+  const queryString = window.location.search;           // produces the URL string after "?"
+  const urlParams = new URLSearchParams(queryString);   // parse the string parameters
+  const product = urlParams.get(param)                  // looks for "value" associated to the provided "key"
   // returns the value (if any)
   if (product) {
     return product;
   } else {
-    console.log(param, "is not a valid field");
+    console.log(param, "is not a valid parameter");
     return null;
   }
 }
