@@ -1,6 +1,7 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
+    // populates products to the home page
     return `
     <li> class="product-card">
         <a href="product_pages/index.html?product=${product.Id}">
@@ -23,10 +24,17 @@ export default class ProductListing {
     // obtains the data
     async init() {
         const list = await this.dataSource.getData();
-        this.renderList(list);
+        const filteredList = filterList(list);
+        this.renderList(filteredList);
     }
 
     renderList(list) {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
+}
+
+// filter the list to only include the 4 products we want to display
+export function filterList(list) {
+    const filteredProducts = ["880RR", "985RF", "985PR", "344YJ"];
+    return list.filter(product => filteredProducts.includes(product.Id));
 }
