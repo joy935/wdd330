@@ -35,3 +35,11 @@ export function getParams(param) {
     return null;
   }
 }
+
+export function renderListWithTemplate(templateFN, parentElement, list, position = "afterbegin", clear = false) {
+  const htmlStrings = list.map(templateFN);
+  if (clear) {
+    parentElement.innerHTML = "";
+  }
+  parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
+}
