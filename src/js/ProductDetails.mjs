@@ -1,5 +1,6 @@
 import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
+
 // HTML for the Details Page of a selected product
 function productDetailsTemplate(product) {
     return `
