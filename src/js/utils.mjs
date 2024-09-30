@@ -23,7 +23,7 @@ export function setClick(selector, callback) {
 }
 
 // search the URL for the "key" (product) parameter, return the "value" (Prod_ID)
-export function getParams(param) {
+export function getParam(param) {
   const queryString = window.location.search;           // produces the URL string after "?"
   const urlParams = new URLSearchParams(queryString);   // parse the string parameters
   const product = urlParams.get(param)                  // looks for "value" associated to the provided "key"
