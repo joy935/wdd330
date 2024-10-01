@@ -4,7 +4,10 @@ function renderCartContents() {
   const cartItems = getLocalStorage("so-cart");
   const htmlItems = cartItems.map((item) => cartItemTemplate(item));
   document.querySelector(".product-list").innerHTML = htmlItems.join("");
+  // Update backpack icon
+  updateCartIcon(cartItems.length);
 }
+
 
 function cartItemTemplate(item) {
   const newItem = `<li class="cart-card divider">
@@ -24,5 +27,11 @@ function cartItemTemplate(item) {
 
   return newItem;
 }
+
+function updateCartIcon(itemCount) {
+  const backpackIcon = document.querySelector(".backpack-icon");
+  backpackIcon.innerHTML = `🛒<sup>${itemCount}</sup>`;
+}
+
 
 renderCartContents();
