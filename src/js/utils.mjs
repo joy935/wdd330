@@ -30,3 +30,15 @@ export function renderListWithTemplate(templateFn, parentElement, list, position
   }
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
+
+
+// getParams(param) that we can use to get a parameter from the URL 
+// when we need to. 
+// (Don't forget to return the parameter!)
+// Function to be Imported into product.js.
+export function getParams(params) {
+  const queryString = window.location.search;
+  const urlParams = new URLSearchParams(queryString);
+  const product = urlParams.get("product");
+  return product;
+}

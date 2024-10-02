@@ -1,7 +1,11 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, getParams } from "./utils.mjs";
 import ProductData from "./ProductData.mjs";
 
 const dataSource = new ProductData("tents");
+
+const para = getParams("product");
+console.log(para);
+console.log(dataSource.findProductById(para));
 
 function addProductToCart(product) {
   // Get the current cart items from local storage or initialize it empty array
