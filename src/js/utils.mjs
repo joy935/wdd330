@@ -54,14 +54,14 @@ export function renderWithTemplate(template, parent, data, callback) {
 export async function loadTemplate(url) {
   const html = await fetch(url);
   const htmlText = await html.text();
-  // const template = document.createElement("template");
-  // template.innerHTML = htmlText;
+  const template = document.createElement("template");
+  template.innerHTML = htmlText;
   return htmlText;
 }
 
 export async function loadHeaderFooter() {
-  const headerTemp = await loadTemplate("../partials/header.html");
-  const footerTemp = await loadTemplate("../partials/footer.html");
+  const headerTemp = await loadTemplate("/partials/header.html");
+  const footerTemp = await loadTemplate("/partials/footer.html");
   const docHeader = document.getElementById("main-header");
   const docFooter = document.getElementById("main-footer");
   renderWithTemplate(headerTemp, docHeader);
