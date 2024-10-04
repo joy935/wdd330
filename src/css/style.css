@@ -202,6 +202,24 @@ button {
   grid-column: 3;
 }
 
+/* product grid */
+.products-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  text-align: center;
+  grid-gap: 1em;
+  padding: 0.5em;
+}
+.products-grid a {
+  text-decoration: none;
+  color: var(--dark-grey);
+}
+.products-grid img {
+  width: 150px;
+}
+
+/* end product grid */
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
