@@ -1,7 +1,7 @@
 import { renderListWithTemplate } from "./utils.mjs";
 
 function productCardTemplate(product) {
-    // populates products to the home page
+    // populates products to the product page
     return `
     <li class="product-card">
         <a href="/product_pages/index.html?product=${product.Id}">
@@ -27,10 +27,8 @@ export default class ProductListing {
         let newList = list.filter((product, i) => i < 4);
         this.renderList(newList);
         // set the title of the page to the category
-        document.querySelector(".h2__title").innerHTML = this.category
-            .split(' ')
-            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
-            .join(' ');
+        const title = document.querySelector(".title")
+        title.textContent = `: ${this.category.charAt(0).toUpperCase() + this.category.slice(1)}`;
     }
 
     renderList(list) {

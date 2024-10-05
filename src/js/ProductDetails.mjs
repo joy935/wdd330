@@ -8,6 +8,7 @@ function productDetailsTemplate(product) {
             <h3>${product.Brand.Name}</h3>
             <h2 class="divider">${product.NameWithoutBrand}</h2>
             <img class="divider" src="${product.Images.PrimaryLarge}" alt="${product.NameWithoutBrand}"/>        
+
             <p class="product-card__price">$${product.FinalPrice}
                 <span class="discount"> -${calculateDiscount(product).toFixed(0)}%</span>
                 </p>
