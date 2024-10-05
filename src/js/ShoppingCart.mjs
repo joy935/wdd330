@@ -25,7 +25,7 @@ export default class ShoppingCart {
     }
     renderCartContents() {
         const cartItems = getLocalStorage(this.key);
-
+        
         // if there are no items in the cart, display a message
         if (!cartItems) {
           document.querySelector(".product-list").innerHTML =
