@@ -8,7 +8,9 @@ function productDetailsTemplate(product) {
             <h3>${product.Brand.Name}</h3>
             <h2 class="divider">${product.NameWithoutBrand}</h2>
             <img class="divider" src="${product.Images.PrimaryLarge}" alt="${product.NameWithoutBrand}"/>        
-            <p class="product-card__price">$${product.FinalPrice}</p>
+            <p class="product-card__price">$${product.FinalPrice}
+                <span class="discount"> -${calculateDiscount(product).toFixed(0)}%</span>
+                </p>
             <p class="product__color">${product.Colors[0].ColorName}</p>
             <p class="product__description">${product.DescriptionHtmlSimple}</p>
             <div class="product-detail__add">
@@ -48,4 +50,10 @@ export default class ProductDetails {
         const element = document.querySelector(selector);
         element.insertAdjacentHTML("afterBegin", productDetailsTemplate(this.product));
     }
+}
+
+// calculate the amount of the discount on the product and return the value
+export function calculateDiscount(product) {
+    let discount = ((product.SuggestedRetailPrice - product.FinalPrice)/product.SuggestedRetailPrice) * 100;
+    return discount;
 }

@@ -220,6 +220,15 @@ button {
 }
 
 /* end product grid */
+
+/* discount style */
+.discount {
+  background-color: var(--primary-color);
+  color: white;
+  padding: 0.1em;
+  text-align: center;
+} 
+/* End discount style */
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
