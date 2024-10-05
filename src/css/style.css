@@ -238,11 +238,6 @@ button {
   max-width: 120px;
 }
 
-/* Format the Title */
-.title {
-  text-transform: capitalize;
-}
-
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

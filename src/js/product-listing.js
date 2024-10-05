@@ -12,4 +12,5 @@ const productList = new ProductListing(
   dataSource,
   listElement,
 );
+
 productList.init();

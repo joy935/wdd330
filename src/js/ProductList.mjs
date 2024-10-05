@@ -25,18 +25,11 @@ export default class ProductListing {
     async init() {
         const list = await this.dataSource.getData(this.category);
         this.renderList(list);
-        document.querySelector(".title").textContent = `: ${this.category}`;
-        // const filteredList = filterList(list);
-        // this.renderList(filteredList);
+        const title = document.querySelector(".title")
+        title.textContent = `: ${this.category.charAt(0).toUpperCase() + this.category.slice(1)}`;
     }
 
     renderList(list) {
         renderListWithTemplate(productCardTemplate, this.listElement, list);
     }
 }
-
-// filter the list to only include the 4 products we want to display
-// export function filterList(list) {
-// const filteredProducts = ["880RR", "985RF", "985PR", "344YJ"];
-// return list.filter(product => filteredProducts.includes(product.Id));
-// }
