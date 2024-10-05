@@ -24,7 +24,9 @@ export default class ProductListing {
     // obtains the data
     async init() {
         const list = await this.dataSource.getData(this.category);
-        this.renderList(list);
+        let newList = list.filter((product, i) => i < 4);
+        this.renderList(newList);
+        // set the title of the page to the category
         const title = document.querySelector(".title")
         title.textContent = `: ${this.category.charAt(0).toUpperCase() + this.category.slice(1)}`;
     }

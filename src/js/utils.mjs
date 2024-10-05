@@ -44,8 +44,16 @@ export function renderListWithTemplate(templateFN, parentElement, list, position
   parentElement.insertAdjacentHTML(position, htmlStrings.join(""));
 }
 
-export function renderWithTemplate(template, parent, data, callback) {
+export function renderWithTemplate(template, parent, data={}, callback) {
   parent.insertAdjacentHTML("afterbegin", template);
+ 
+  // Update cart icon if data is provided
+  if (data.countCart !== undefined) {
+    const cartCountElement = document.querySelector('#cart-item-count');
+    cartCountElement.textContent = data.countCart > 0 ? data.countCart : '';
+    cartCountElement.style.display = data.countCart > 0 ? 'inline' : 'none';
+  }
+
   if (callback) {
     callback(data);
   }
@@ -54,16 +62,26 @@ export function renderWithTemplate(template, parent, data, callback) {
 export async function loadTemplate(url) {
   const html = await fetch(url);
   const htmlText = await html.text();
-  const template = document.createElement("template");
-  template.innerHTML = htmlText;
+  // const template = document.createElement("template");
+  // template.innerHTML = htmlText;
   return htmlText;
 }
 
 export async function loadHeaderFooter() {
-  const headerTemp = await loadTemplate("/partials/header.html");
-  const footerTemp = await loadTemplate("/partials/footer.html");
+  const headerTemp = await loadTemplate("../partials/header.html");
+  const footerTemp = await loadTemplate("../partials/footer.html");
   const docHeader = document.getElementById("main-header");
   const docFooter = document.getElementById("main-footer");
-  renderWithTemplate(headerTemp, docHeader);
+
+  const storageItems= getLocalStorage("so-cart");
+
+  // render header.html
+  if (storageItems) {
+    const countCart = storageItems.length; // count number of items in carts
+    renderWithTemplate(headerTemp, docHeader,{ countCart });
+  } else {
+    renderWithTemplate(headerTemp, docHeader);
+  }
+  // render footer.html
   renderWithTemplate(footerTemp, docFooter);
 }
