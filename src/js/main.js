@@ -1,14 +1,9 @@
 import ProductData from "./ProductData.mjs";
-import ProductList from "./ProductList.mjs";
+import ProductListing from "./ProductList.mjs";
+import { loadHeaderFooter } from "./utils.mjs";
 
+loadHeaderFooter();
 const dataSource = new ProductData("tents");
-const element = document.querySelector(".product-list");
-const listing = new ProductList("Tents", dataSource, element);
-
-// const listfilter = new ProductList('Tents', dataSource, listElement);
-// await listing.filterProducts('Tents');
-
-// listfilter.init();
-
-listing.init();
-// console.log("it works");
+const listElement = document.querySelector(".product-list");
+const productList = new ProductListing("Tents", dataSource, listElement);
+productList.init();
