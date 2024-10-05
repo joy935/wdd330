@@ -27,7 +27,10 @@ export default class ProductListing {
         let newList = list.filter((product, i) => i < 4);
         this.renderList(newList);
         // set the title of the page to the category
-        document.querySelector(".h2__title").innerHTML = this.category;
+        document.querySelector(".h2__title").innerHTML = this.category
+            .split(' ')
+            .map(word => word.charAt(0).toUpperCase() + word.slice(1))
+            .join(' ');
     }
 
     renderList(list) {
