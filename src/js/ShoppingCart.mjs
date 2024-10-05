@@ -4,7 +4,7 @@ function cartItemTemplate(item) {
   const newItem = `
   <li class="cart-card divider">
     <a href="#" class="cart-card__image">
-      <img src="${item.Image}" alt="${item.Name}"/>
+      <img src="${item.Images.PrimaryMedium}" alt="${item.Name}"/>
     </a>
     <a href="#">
       <h2 class="card__name">${item.Name}</h2>
@@ -46,7 +46,7 @@ export default class ShoppingCart {
         // show the cart footer
         cartFooter.removeAttribute("hidden");
         // add total price to the cart footer
-        cartFooter.innerHTML = `<p class="cart-total">Total: $${total}</p>`;
+        cartFooter.innerHTML = `<p class="cart-total">Total: $${total.toFixed(2)}</p>`;
       
         document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
       }
