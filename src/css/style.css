@@ -85,7 +85,7 @@ header {
   margin-top: -1.3em;
 }
 
-.logo--square>div {
+.logo--square > div {
   margin-top: -1.7em;
 }
 
@@ -236,6 +236,11 @@ button {
 .grid-box {
   display: grid;
   max-width: 120px;
+}
+
+/* Format the Title */
+.title {
+  text-transform: capitalize;
 }
 
 @media screen and (min-width: 500px) {
