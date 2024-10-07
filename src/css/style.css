@@ -286,3 +286,20 @@ footer {
   font-size: var(--small-font);
   padding: 1em;
 }
+
+/* ALERT */
+.alert-list {
+  padding: 10px;
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.alert-list p {
+  padding: 10px;
+  margin: 10px 0;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
