@@ -263,7 +263,7 @@ button {
   color: white;
   padding: 0.1em;
   text-align: center;
-} 
+}
 /* End discount style */
 
 @media screen and (min-width: 500px) {
@@ -302,4 +302,3 @@ footer {
   border-radius: 5px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
-
