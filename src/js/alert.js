@@ -23,7 +23,7 @@ class Alert {
       const alertSection = document.createElement("section");
       alertSection.classList.add("alert-list");
 
-      this.alerts.forEach(alert => {
+      this.alerts.forEach((alert) => {
         const alertElement = document.createElement("p");
         alertElement.textContent = alert.message;
         alertElement.style.backgroundColor = alert.background;
