@@ -30,6 +30,8 @@ export default class ProductDetails {
 
     async init() {
         this.product = await this.dataSource.findProductById(this.productId);
+        // Update this.product with quantity
+        this.product.Quantity = (this.product.quantity || 0) + 1; // Defaults to 0 if undefined; // This will increment the quantity by 1
         this.renderProductDetails("main");
         document.getElementById("addToCart").addEventListener("click", this.addToCart.bind(this));
     }

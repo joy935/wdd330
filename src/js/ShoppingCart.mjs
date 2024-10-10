@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function cartItemTemplate(item) {
   const newItem = `
@@ -10,13 +10,32 @@ function cartItemTemplate(item) {
       <h2 class="card__name">${item.Name}</h2>
     </a>
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
-    <p class="cart-card__quantity">qty: 1</p>
+    <p class="cart-card__quantity"> 
+    <label for="${item.Id}">Quantity </label>
+    <input type="number" id="${item.Id}" data-id="${item.Id}" class="qty" min="1" max="100" value = "${item.Quantity}" /> 
+    </p>
     <p class="cart-card__price">$${item.FinalPrice}</p>
   </li>`;
 
   return newItem;
 }
 
+// Function to update the quantity of items in the cart 
+// and then save
+export function updateCartItem(key, id, newQuantity) {
+  let cart = getLocalStorage(`${key}`);
+  const itemIndex = cart.findIndex(item => item.Id === id);
+  if (itemIndex !== -1) {
+      cart[itemIndex].Quantity = newQuantity;
+  } else {
+      alert("Item not found in cart");
+  }
+  //Save changes to local storage
+  setLocalStorage(key, cart);
+}
+
+// ShoppingCart save cart data in localstorage
+// is exported to / imported by cart.js
 export default class ShoppingCart {
     // assigns variables to data
     constructor(key, parentSelector) {
