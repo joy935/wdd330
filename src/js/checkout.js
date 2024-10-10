@@ -6,5 +6,10 @@ const checkout = new CheckoutProcess("so-cart", ".product-list");
 checkout.init();
 
 document.getElementById("zip").addEventListener("input", () => {
-    checkout.calculateOrderTotal();
+  checkout.calculateOrderTotal();
+});
+
+document.getElementById("checkout-button").addEventListener("click", async (e) => {
+  e.preventDefault();
+  checkout.checkout();
 });
