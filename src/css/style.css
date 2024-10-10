@@ -294,6 +294,28 @@ form input:required {
 form input:required:valid {
   border-color: green;
 }
+/* End checkout form */
+
+/* alert errors form validation */
+.alert {
+  background-color: #f0a868;
+  border: 1px solid #fd8f00;
+  position: relative;
+}
+.alert button {
+  position: absolute;
+  top: 20%;
+  right: 0.1rem;
+  font-size: 1em;
+  color: black;
+  background-color: #f0a868;
+  cursor: pointer;
+}
+.alert button:hover {
+  color: white;
+}
+/* End alert errors form validation */
+
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;

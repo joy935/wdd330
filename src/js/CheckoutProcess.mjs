@@ -81,6 +81,15 @@ export default class CheckoutProcess {
             const response = await externalService.checkout(data);
             console.log("API response:", response);
             setLocalStorage("so-cart", []); // clear the cart
+
+            // Hide cart footer and checkout button
+            const cartFooter = document.querySelector(".cart-footer");
+            const checkoutBtn = document.querySelector(".checkout-button");
+            
+            if (cartFooter) cartFooter.setAttribute("hidden", "true");
+            if (checkoutBtn) checkoutBtn.setAttribute("hidden", "true");
+
+
             window.location.href = "/checkout/success.html"; // redirect to success page
         } catch (error) {
             console.error("API error:", error);
