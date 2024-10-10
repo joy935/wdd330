@@ -5,11 +5,15 @@ loadHeaderFooter();
 const checkout = new CheckoutProcess("so-cart", ".product-list");
 checkout.init();
 
+// event listener to display the summary order details
 document.getElementById("zip").addEventListener("input", () => {
   checkout.calculateOrderTotal();
 });
 
-document.getElementById("checkout-button").addEventListener("click", async (e) => {
-  e.preventDefault();
-  checkout.checkout();
-});
+// event listener to checkout
+document
+  .getElementById("checkout-button")
+  .addEventListener("click", async (e) => {
+    e.preventDefault();
+    checkout.checkout();
+  });

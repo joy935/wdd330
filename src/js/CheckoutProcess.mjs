@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const externalService = new ExternalServices();
@@ -80,6 +80,8 @@ export default class CheckoutProcess {
         try {
             const response = await externalService.checkout(data);
             console.log("API response:", response);
+            setLocalStorage("so-cart", []); // clear the cart
+            window.location.href = "/checkout/success.html"; // redirect to success page
         } catch (error) {
             console.error("API error:", error);
         }

@@ -43,8 +43,10 @@ export default class ShoppingCart {
         });
       
         const cartFooter = document.querySelector(".cart-footer");
+        const checkoutBtn = document.querySelector(".checkout-button");
         // show the cart footer
         cartFooter.removeAttribute("hidden");
+        checkoutBtn.removeAttribute("hidden");
         // add total price to the cart footer
         cartFooter.innerHTML = `<p class="cart-total">Total: $${total.toFixed(2)}</p>`;
       
