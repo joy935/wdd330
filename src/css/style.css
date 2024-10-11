@@ -309,11 +309,17 @@ form input:required:valid {
 }
 /* End checkout form */
 
-/* alert errors form validation */
+/* alert errors form validation + add product to cart */
 .alert {
   background-color: #f0a868;
   border: 1px solid #fd8f00;
   position: relative;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}
+.alert p {
+  padding-left: 2rem;
+  color: black;
 }
 .alert button {
   position: absolute;
@@ -328,6 +334,39 @@ form input:required:valid {
   color: white;
 }
 /* End alert errors form validation */
+
+/* nav search bar */
+nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.5em;
+  background-color: var(--primary-color);
+}
+nav input {
+  width: 100%;
+  padding: 0.5em;
+  border-radius: 5px;
+  border: 0;
+}
+
+.search-form {
+  display: flex;
+  justify-content: space-between;
+  width: 150%;
+}
+
+#search-button, #clear-button {
+  background-color: var(--secondary-color);
+  color: white;
+  border: 0;
+  padding: 0.5em;
+  border-radius: 5px;
+  margin-left: 3px;
+  cursor: pointer;
+  font-size: 15px;
+}
+
+/* End nav search bar */
 
 @media screen and (min-width: 500px) {
   body {
