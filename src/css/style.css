@@ -266,6 +266,19 @@ button {
 }
 /* End discount style */
 
+/* shopping cart style */
+.cart-footer {
+  margin-left: 0.5rem;
+}
+.checkout-button button {
+  margin-left: 0.5rem;
+  margin-bottom: 0.5rem;
+}
+#checkout-button {
+  margin-left: 0;
+  margin-top: 0.5rem;
+}
+
 /* checkout form */
 form fieldset {
   border: 1px solid var(--light-grey);
