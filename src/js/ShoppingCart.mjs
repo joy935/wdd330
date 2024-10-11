@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 
 function cartItemTemplate(item) {
   const newItem = `
@@ -12,7 +12,7 @@ function cartItemTemplate(item) {
     <p class="cart-card__color">${item.Colors[0].ColorName}</p>
     <p class="cart-card__quantity">qty: 1</p>
     <p class="cart-card__price">$${item.FinalPrice}</p>
-    <span class="cart-card__remove" data-id="${item.Id}">X</span>  
+    <span class="cart-card__remove-data" id="${item.Id}">X</span>  
   </li>`;
 
   return newItem;
@@ -55,6 +55,22 @@ export default class ShoppingCart {
 
   removeItemListener() {
     const cartContainer = document.querySelector(this.parentSelector);
-    cartContainer.addEventListener("click",)
+    
+    // event listener to remove item from cart
+    cartContainer.addEventListener("click", (e) => {
+      if (e.target.classList.contains("cart-card__remove-data")) {
+        const itemId = e.target.id;
+        this.removeItem(itemId);
+      }
+    });
+  }
+
+  removeItem(itemId) {
+    let cartItems = getLocalStorage(this.key);
+    cartItems = cartItems.filter((item) => item.Id !== itemId);
+    // update local storage
+    setLocalStorage(this.key, cartItems);
+    // re-render the cart
+    this.renderCartContents();
   }
 }

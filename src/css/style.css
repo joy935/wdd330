@@ -233,7 +233,7 @@ button {
   text-align: right;
 }
 
-.cart-card__remove {
+.cart-card__remove-data {
   grid-row: 1;
   grid-column: 4;
   text-align: center;
