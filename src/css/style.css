@@ -191,10 +191,15 @@ button {
 /* Start cart list card styles */
 .cart-card {
   display: grid;
-  grid-template-columns: 25% auto 15%;
+  width: 95%;
+  margin: 0% auto;
+  padding: 1% 5%;
+  grid-template-columns: 25% auto 15% 1%;
   font-size: var(--small-font);
   /* max-height: 120px; */
   align-items: center;
+  gap: 4%;
+  border: 1px solid lightgray;
 }
 
 .cart-card__image {
@@ -219,11 +224,27 @@ button {
 .cart-card__quantity {
   grid-row: 1;
   grid-column: 3;
+  text-align: right;
 }
 
 .cart-card__price {
   grid-row: 2;
   grid-column: 3;
+  text-align: right;
+}
+
+.cart-card__remove {
+  grid-row: 1;
+  grid-column: 4;
+  text-align: center;
+  font-size: larger;
+  font-weight: 500;
+  margin: 0;
+  margin-left: 50%;
+  color: darkred;
+  border: 1px solid gray;
+  width: 25px;
+  align-self: top;
 }
 
 .item-count {
@@ -235,7 +256,8 @@ button {
   border-radius: 50%;
   padding: 2px 5px;
   font-size: 0.6em;
-  display: none; /* Hidden by default */
+  display: none;
+  /* Hidden by default */
 }
 
 /* product grid */
@@ -247,10 +269,12 @@ button {
   grid-gap: 1em;
   padding: 0.5em;
 }
+
 .products-grid a {
   text-decoration: none;
   color: var(--dark-grey);
 }
+
 .products-grid img {
   width: 150px;
 }
@@ -264,6 +288,7 @@ button {
   padding: 0.1em;
   text-align: center;
 }
+
 /* End discount style */
 
 /* checkout form */
