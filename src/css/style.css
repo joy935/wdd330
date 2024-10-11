@@ -355,7 +355,8 @@ nav input {
   width: 150%;
 }
 
-#search-button, #clear-button {
+#search-button,
+#clear-button {
   background-color: var(--secondary-color);
   color: white;
   border: 0;
