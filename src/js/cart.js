@@ -5,3 +5,7 @@ loadHeaderFooter();
 
 const cart = new ShoppingCart("so-cart", ".product-list");
 cart.renderCartContents();
+
+document.querySelector(".checkout-button").addEventListener("click", () => {
+  window.location.href = "/checkout/index.html";
+});

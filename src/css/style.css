@@ -291,6 +291,34 @@ button {
 
 /* End discount style */
 
+/* checkout form */
+form fieldset {
+  border: 1px solid var(--light-grey);
+  padding: 0.5em;
+  margin: 0.5em 0;
+  border-radius: 10px;
+  max-width: 500px;
+}
+form legend {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+form label.top {
+  display: block;
+  margin-top: 0.5em;
+}
+form input {
+  display: block;
+  font-size: 1rem;
+}
+
+form input:required {
+  border-color: var(--primary-color);
+}
+
+form input:required:valid {
+  border-color: green;
+}
 @media screen and (min-width: 500px) {
   body {
     max-width: 1080px;
@@ -310,4 +338,20 @@ button {
 footer {
   font-size: var(--small-font);
   padding: 1em;
+}
+
+/* ALERT */
+.alert-list {
+  padding: 10px;
+  margin: 15px 0;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.alert-list p {
+  padding: 10px;
+  margin: 10px 0;
+  font-weight: bold;
+  border-radius: 5px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
