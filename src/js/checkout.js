@@ -9,7 +9,9 @@ document.getElementById("zip").addEventListener("input", () => {
   checkout.calculateOrderTotal();
 });
 
-document.getElementById("checkout-button").addEventListener("click", async (e) => {
-  e.preventDefault();
-  checkout.checkout();
-});
+document
+  .getElementById("checkout-button")
+  .addEventListener("click", async (e) => {
+    e.preventDefault();
+    checkout.checkout();
+  });
