@@ -1,4 +1,4 @@
-import { getLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 import ExternalServices from "./ExternalServices.mjs";
 
 const externalService = new ExternalServices();
@@ -60,9 +60,9 @@ export default class CheckoutProcess {
             this.displayOrderTotals();
     }
     displayOrderTotals() {
-        document.getElementById("shipping-estimate").textContent = this.shipping.toFixed(2);
-        document.getElementById("tax").textContent = this.tax.toFixed(2);
-        document.getElementById("order-total").textContent = this.orderTotal.toFixed(2);
+        document.getElementById("shipping-estimate").textContent = `$${this.shipping.toFixed(2)}`;
+        document.getElementById("tax").textContent = `$${this.tax.toFixed(2)}`;
+        document.getElementById("order-total").textContent = `$${this.orderTotal.toFixed(2)}`;
     }
     async checkout() {
         const formElement = document.forms["checkout-form"];
@@ -80,6 +80,17 @@ export default class CheckoutProcess {
         try {
             const response = await externalService.checkout(data);
             console.log("API response:", response);
+            setLocalStorage("so-cart", []); // clear the cart
+
+            // Hide cart footer and checkout button
+            const cartFooter = document.querySelector(".cart-footer");
+            const checkoutBtn = document.querySelector(".checkout-button");
+            
+            if (cartFooter) cartFooter.setAttribute("hidden", "true");
+            if (checkoutBtn) checkoutBtn.setAttribute("hidden", "true");
+
+
+            window.location.href = "/checkout/success.html"; // redirect to success page
         } catch (error) {
             console.error("API error:", error);
         }
