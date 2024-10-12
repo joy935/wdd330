@@ -1,4 +1,4 @@
-import { getLocalStorage, setLocalStorage } from "./utils.mjs";
+import { getLocalStorage, setLocalStorage, alertMessage } from "./utils.mjs";
 
 
 // HTML for the Details Page of a selected product
@@ -44,6 +44,8 @@ export default class ProductDetails {
         if (!exists) {
             // add new item to the cart
             cart.push(this.product);
+            // put an alert message when the product is added to the cart
+            alertMessage("Product added to cart", true);
             // update local storage with complete cart
             setLocalStorage("so-cart", cart);
         }

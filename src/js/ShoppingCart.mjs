@@ -3,7 +3,7 @@ import { getLocalStorage, setLocalStorage } from "./utils.mjs";
 function cartItemTemplate(item) {
   const newItem = `
   <li class="cart-card divider">
-    <a href="#" class="cart-card__image">
+  <a href="#" class="cart-card__image">
       <img src="${item.Images.PrimaryMedium}" alt="${item.Name}"/>
     </a>
     <a href="#">
@@ -15,6 +15,7 @@ function cartItemTemplate(item) {
     <input type="number" id="${item.Id}" data-id="${item.Id}" class="qty" min="1" max="100" value = "${item.Quantity}" /> 
     </p>
     <p class="cart-card__price">$${item.FinalPrice}</p>
+    <span class="cart-card__remove-data" id="${item.Id}">X</span>  
   </li>`;
 
   return newItem;
@@ -37,18 +38,25 @@ export function updateCartItem(key, id, newQuantity) {
 // ShoppingCart save cart data in localstorage
 // is exported to / imported by cart.js
 export default class ShoppingCart {
-    // assigns variables to data
-    constructor(key, parentSelector) {
-        this.key = key;
-        this.parentSelector = parentSelector;
-    }
-    renderCartContents() {
+  // assigns variables to data
+  constructor(key, parentSelector) {
+    this.key = key;
+    this.parentSelector = parentSelector;
+  }
+
+  renderCartContents() {
         const cartItems = getLocalStorage(this.key);
+        const cartFooter = document.querySelector(".cart-footer");
+        const checkoutBtn = document.querySelector(".checkout-button");
         
         // if there are no items in the cart, display a message
-        if (!cartItems) {
+        if (!cartItems || cartItems.length === 0) {
           document.querySelector(".product-list").innerHTML =
             "<p>Your cart is empty</p>";
+            // cartFooter.setAttribute("hidden", "true");
+            // checkoutBtn.setAttribute("hidden", "true");
+            document.querySelector(".cart-footer").setAttribute("hidden", true); // hide the cart footer
+          document.querySelector(".checkout-button").style.display = "none"; // hide the checkout button
           return;
         }
       
@@ -61,12 +69,32 @@ export default class ShoppingCart {
           total += parseFloat(item.FinalPrice);
         });
       
-        const cartFooter = document.querySelector(".cart-footer");
         // show the cart footer
         cartFooter.removeAttribute("hidden");
+        checkoutBtn.removeAttribute("hidden");
         // add total price to the cart footer
         cartFooter.innerHTML = `<p class="cart-total">Total: $${total.toFixed(2)}</p>`;
       
         document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
+  }
+  removeItemListener() {
+    const cartContainer = document.querySelector(this.parentSelector);
+    
+    // event listener to remove item from cart
+    cartContainer.addEventListener("click", (e) => {
+      if (e.target.classList.contains("cart-card__remove-data")) {
+        const itemId = e.target.id;
+        this.removeItem(itemId);
       }
+    });
+  }
+
+  removeItem(itemId) {
+    let cartItems = getLocalStorage(this.key);
+    cartItems = cartItems.filter((item) => item.Id !== itemId);
+    // update local storage
+    setLocalStorage(this.key, cartItems);
+    // re-render the cart
+    this.renderCartContents();
+  }
 }
