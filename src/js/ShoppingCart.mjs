@@ -34,6 +34,23 @@ export function updateCartItem(key, id, newQuantity) {
   setLocalStorage(key, cart);
 }
 
+/////////////////
+export function cartQuantityEvent(event) {
+  const newQuantity = parseInt(event.target.value);
+  const itemId = event.target.getAttribute("data-id");
+
+  if (newQuantity < 1 || newQuantity > 100) {
+    alert("Quantity must be between 1 and 100");
+    return;
+  }
+  // Update the cart with the new quantity
+  updateCartItem("so-cart", itemId, newQuantity);
+};
+
+
+////////////////
+
+
 // ShoppingCart save cart data in localstorage
 // is exported to / imported by cart.js
 export default class ShoppingCart {
@@ -58,7 +75,7 @@ export default class ShoppingCart {
         // calculate total price
         let total = 0;
         cartItems.forEach((item) => {
-          total += parseFloat(item.FinalPrice);
+          total += parseFloat(item.FinalPrice * item.Quantity);
         });
       
         const cartFooter = document.querySelector(".cart-footer");
