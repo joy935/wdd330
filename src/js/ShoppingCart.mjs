@@ -26,17 +26,6 @@ export default class ShoppingCart {
   }
 
   renderCartContents() {
-    const cartItems = getLocalStorage(this.key);
-
-    // if there are no items in the cart, display a message
-    if (!cartItems || cartItems.length === 0) {
-      document.querySelector(".product-list").innerHTML =
-        "<p>Your cart is empty</p>";
-        document.querySelector(".cart-footer").setAttribute("hidden", true); // hide the cart footer
-        document.querySelector(".checkout-button").style.display = "none"; // hide the checkout button
-      return;
-    }
-    renderCartContents() {
         const cartItems = getLocalStorage(this.key);
         const cartFooter = document.querySelector(".cart-footer");
         const checkoutBtn = document.querySelector(".checkout-button");
@@ -45,8 +34,10 @@ export default class ShoppingCart {
         if (!cartItems || cartItems.length === 0) {
           document.querySelector(".product-list").innerHTML =
             "<p>Your cart is empty</p>";
-            cartFooter.setAttribute("hidden", "true");
-            checkoutBtn.setAttribute("hidden", "true");
+            // cartFooter.setAttribute("hidden", "true");
+            // checkoutBtn.setAttribute("hidden", "true");
+            document.querySelector(".cart-footer").setAttribute("hidden", true); // hide the cart footer
+          document.querySelector(".checkout-button").style.display = "none"; // hide the checkout button
           return;
         }
       
@@ -66,7 +57,7 @@ export default class ShoppingCart {
         cartFooter.innerHTML = `<p class="cart-total">Total: $${total.toFixed(2)}</p>`;
       
         document.querySelector(this.parentSelector).innerHTML = htmlItems.join("");
-      
+  }
   removeItemListener() {
     const cartContainer = document.querySelector(this.parentSelector);
     

@@ -30,7 +30,9 @@ async function getSearchResults() {
             searchResults.toLowerCase(),
           ) ||
           // match the category
-          product.Category.toLowerCase().includes(searchResults.toLowerCase()) ||
+          product.Category.toLowerCase().includes(
+            searchResults.toLowerCase(),
+          ) ||
           // match the product name
           product.Name.toLowerCase().includes(searchResults.toLowerCase()) ||
           // match the color
