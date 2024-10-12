@@ -48,7 +48,10 @@ export default class ProductDetails {
             alertMessage("Product added to cart", true);
             // update local storage with complete cart
             setLocalStorage("so-cart", cart);
+            cartAnimate();
+            
         }
+
     }
 
     renderProductDetails(selector) {
@@ -61,4 +64,15 @@ export default class ProductDetails {
 export function calculateDiscount(product) {
     let discount = ((product.SuggestedRetailPrice - product.FinalPrice)/product.SuggestedRetailPrice) * 100;
     return discount;
+}
+
+// Animate cart (backpack)
+function cartAnimate() {
+    const cartLink = document.querySelector(".cart a");
+    // Trigger animation
+    cartLink.classList.add('active');
+    // Remove the active class after the animation completes
+    setTimeout(() => {
+        cartLink.classList.remove('active');
+      }, 600); // Duration must match the CSS transition duration
 }

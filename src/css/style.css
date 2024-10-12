@@ -120,10 +120,26 @@ button {
 
 .cart svg {
   width: 25px;
+  transition: transform 0.3s ease;
 }
 
 .cart:hover svg {
   fill: gray;
+}
+
+/* Keyframe animation for item added */
+@keyframes shake {
+  0% { transform: scale(1); }
+  25% { transform: scale(1.2); }
+  50% { transform: scale(1); }
+  75% { transform: scale(1.2); }
+  100% { transform: scale(1); }
+}
+
+.cart a.active svg {
+  animation: shake 0.6s;
+  /* fill: #FF6347; Change to a highlight color */
+  /* transform: scale(1.2); */
 }
 
 /* End cart icon styles */
