@@ -29,9 +29,11 @@ export default class ShoppingCart {
     const cartItems = getLocalStorage(this.key);
 
     // if there are no items in the cart, display a message
-    if (!cartItems) {
+    if (!cartItems || cartItems.length === 0) {
       document.querySelector(".product-list").innerHTML =
         "<p>Your cart is empty</p>";
+        document.querySelector(".cart-footer").setAttribute("hidden", true); // hide the cart footer
+        document.querySelector(".checkout-button").style.display = "none"; // hide the checkout button
       return;
     }
 
