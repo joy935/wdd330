@@ -66,7 +66,7 @@ export default class ShoppingCart {
         // calculate total price
         let total = 0;
         cartItems.forEach((item) => {
-          total += parseFloat(item.FinalPrice);
+          total += parseFloat(item.FinalPrice * item.Quantity);
         });
       
         // show the cart footer
