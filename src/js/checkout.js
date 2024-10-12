@@ -15,7 +15,6 @@ document
   .getElementById("checkout-button")
   .addEventListener("click", async (e) => {
     e.preventDefault();
-
     const form = document.getElementById("checkout-form");
     const zip = form.zip.value;
     const cardNumber = form.cardNumber.value;
