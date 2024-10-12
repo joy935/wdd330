@@ -44,7 +44,7 @@ export default class CheckoutProcess {
             this.list.forEach(item => {         
                 this.itemTotal += item.FinalPrice;    
             });
-            document.getElementById("subtotal").textContent = this.itemTotal.toFixed(2);
+            document.getElementById("subtotal").textContent = `$${this.itemTotal.toFixed(2)}`;
 
             // and the number of items.
             this.list.length;  
